@@ -6,8 +6,13 @@
             <img class="container__img" src="/assets/cta/chair-2.png">
             <img class="container__img" src="/assets/cta/chair-3.png">
         </div>
-        <div>
-            <button>view all products</button>
+        <div class="button_container">
+            <Button 
+                to="/products"
+                buttonClass="primary-style"
+                buttonText="view all products"
+                clickHandler="goToProducts"
+            />
         </div>
     </div>
    
@@ -20,12 +25,11 @@
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    border: $light-brown;
     &__text {
-        max-width: 400px;
+        max-width: 350px;
         margin: 0 auto;
         text-transform: uppercase;
-        border: 1px solid $light-brown;
+        // border: 1px solid $light-brown;
         font-size: 3.5rem;
         text-align: center;
         font-family: 'Oswald', sans-serif;
@@ -37,17 +41,22 @@
     &__img {
         max-width: 250px;
         margin: 0.5rem auto;
-    }
-   
+    }   
 }
+
+.button_container {
+    display: flex;
+    justify-content: center;
+}
+
+
 @media (min-width: 768px) {
     .container {
-        border: 1px solid green;
         &__text {
-            max-width: 1100px;
+            max-width: 600px;
+            margin: 1rem auto;
         }
         &__imgs {
-            border: 1px solid magenta;
             flex-direction: row;
             justify-content: space-between;
         }
@@ -61,7 +70,8 @@
 @media (min-width: 992px) {
     .container {
         &__text {
-            font-size: 9rem;
+            max-width: 800px;
+            font-size: 6rem;
         }
         &__img {
             max-width: 320px;

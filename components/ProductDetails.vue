@@ -11,7 +11,12 @@
             </div>
         </div>
         <div class="links">
-            <button>find a store</button>
+            <Button 
+                to="/where-to-buy"
+                buttonClass="default-style"
+                buttonText="find in store"
+                clickHandler="goToProducts"
+            />
             <div class="wishlist">
                 <img src="/assets/empty-fav.png" class="wishlist__icon">
                 <p class="wishlist__text">Add to wishlist</p>
@@ -37,8 +42,6 @@
     align-items: center;
     padding: 0 1rem;
     max-width: 325px;
-    // margin: 0 auto;
-    border: 1px solid green;
     &__img {
         max-width: 325px;
         border: 1px solid $light-brown;
@@ -76,9 +79,6 @@
     &__icon {
         max-width: 20px;
         margin: 0 0.5rem 0 0;
-    }
-    &__text {
-        font-size: 0.8rem;
     }
 }
 
