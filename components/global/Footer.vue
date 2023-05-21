@@ -1,32 +1,35 @@
 <template>
    <div class="container">
-       <div class="container__links">
-            <div>
-                <p class="container__links_title">company</p>
-                <ul class="container__links_list">
-                  <li>our story</li>
-                  <li>products</li>
-                  <li>find a dealer</li>
+       <div class="links">
+            <div class="links__single">
+                <p class="links__title">company</p>
+                <ul class="links__list">
+                    <li><NuxtLink class="links__single_link" to="/about">our story</NuxtLink></li>
+                    <li><NuxtLink class="links__single_link" to="/products">products</NuxtLink></li>
+                    <li><NuxtLink class="links__single_link" to="/where-to-buy">find a dealer</NuxtLink></li>
+                
                 </ul>
             </div>
-            <div>
-                <p class="container__links_title">contact</p>
-                <ul class="container__links_list">
-                    <li class="container__contact">WOUD A/SSøndergårdsalle 9 MF8700 Horsens Denmark </li>
+            <div class="links__single">
+                <p class="links__title">contact</p>
+                <ul class="links__list">
+                    <li class="links_list__contact">Lumière Nørrebrogade 22, 2200 / Copenhagen </li>
+                    <li>lumiere.furniture@gmail.com</li>
+                    <li>+45 12 34 56 78</li>
                 </ul>
             </div>
-            <div>
-                <p class="container__links_title">legal</p>
-                <ul class="container__links_list">
+            <!-- <div>
+                <p class="links__title">legal</p>
+                <ul class="links_list">
                   <li>privacy policy</li>
                   <li>warranty</li>
                   <li>terms and conditions</li>
                 </ul>
-            </div>
+            </div> -->
        </div>
-       <div class="container__bottom">
-           <p>lumiere</p>
-           <p class="container__copyright">Copyright © Lumiere Furniture 2023</p>
+       <div class="copyright">
+           <p class="copyright__logo">lumière</p>
+           <p class="copyright__text">Copyright © Lumiere Furniture 2023</p>
        </div>
    </div>
 </template>
@@ -36,56 +39,64 @@
 @import "@/assets/main.scss";
 
 .container {
+    margin-top: 5rem;
     background-color: $light-brown;
-    margin: 0 auto;
-    &__links {
-        padding: 1rem 0;
-        max-width: 900px;
-        margin: 0 auto;
+   
+}
+.links {
+    color: $gray-primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__single {
         text-align: center;
-        color: $gray-primary;
+        max-width: 250px;
+        margin: 0 auto;
     }
-    &__links_title {
-       opacity: 0.5;
-       margin: 1rem 0;
-       text-transform: uppercase;
-    }
-    &__bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        font-size: 1rem;
-        border-top: 1px $gray-primary solid;
-        margin: 1rem 0;
-    }
-    &__copyright {
-        font-size: 0.8rem;
+    &__title {
+        text-transform: uppercase;
         opacity: 0.5;
     }
-    &__links_list {
+    &__list {
         list-style: none;
+        padding: 0;
+    }
+    &__single_link {
+        text-decoration: none;
+        color: $gray-primary;
+    }
+    &__single_link:hover {
+        color: $black;
+    }
+}
+.copyright {
+    border-top: 2px solid rgb(225, 225, 225, 0.5);
+    text-align: center;
+    &__logo {
+        font-family: $titleFont;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    &__text {
+        opacity: 0.5;
+        font-size: 0.8rem;
     }
 }
 
+
 @media (min-width: 768px) {
     .container {
-        &__links_title {
-        opacity: 0.5;
-        margin: 1rem 0;
-        text-transform: uppercase;
-        }
-        &__links {
-            display: flex;
-            justify-content: space-around;
-        }
-        &__contact {
-            max-width: 150px;
-        }
-        &__bottom {
-            flex-direction: row;
-        }
+        margin-top: 12rem;
+    }
+    .links {
+        flex-direction: row;
+    }
+    .copyright {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 2.5rem;
     }
 }
 </style>
