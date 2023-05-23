@@ -1,44 +1,36 @@
 <template>
-    <div class="product_card_container">
-         <div class="product_card">
-        <div class="product_card__img_container">
-            <img class="product_card__img" src="assets/products/chair.png">
-        </div>
-        <div class="product_card__info_container">
-            <div class="product_card__info">
-                <p class="product_card__name">serenity seat</p>
-                <p class="product_card__price">starting from $200</p>
+    <div class="product_card_container" >
+        <div class="product_card " v-for="product in products" :key="product.id">
+            <div class="product_card__img_container">
+                <img class="product_card__img" :src="product.img">
             </div>
-            <img class="product_card__icon" src="/assets/empty-fav.png">
+            <div class="product_card__info_container">
+                <div class="product_card__info">
+                    <p class="product_card__name">{{product.name}}</p>
+                    <p class="product_card__price">starting from $200</p>
+                </div>
+             
+                <img class="product_card__icon" 
+                
+            
+            >
+            </div>
         </div>
     </div>
-        <div class="product_card">
-        <div class="product_card__img_container">
-            <img class="product_card__img" src="assets/products/chair.png">
-        </div>
-        <div class="product_card__info">
-            <p>serenity seat</p>
-            <img class="product_card__icon" src="/assets/empty-fav.png">
-            <!-- <div class="product_card__price_container">
-                <p>starting from $200</p>
-            </div> -->
-        </div>
-    </div>
-        <div class="product_card">
-        <div class="product_card__img_container">
-            <img class="product_card__img" src="assets/products/chair.png">
-        </div>
-        <div class="product_card__info">
-            <p>serenity seat</p>
-            <img class="product_card__icon" src="/assets/empty-fav.png">
-            <!-- <div class="product_card__price_container">
-                <p>starting from $200</p>
-            </div> -->
-        </div>
-    </div>
-    </div>
-   
 </template>
+
+<script>
+export default {
+  props: {
+    products: {
+      type: Array,
+      required: true
+    }
+  }
+}
+</script>
+
+
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
@@ -89,4 +81,9 @@
 }
 
 
-</style>
+</style> 
+
+
+
+
+   
