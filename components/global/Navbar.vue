@@ -1,21 +1,40 @@
 <template>
     <header class="container">
         <h1 class="logo">lumière</h1>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <nav>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" @click="toggleMenu">
+        <nav :class="{ 'expanded': isMenuOpen }">
             <ul>
-                <li><a href="#">about</a></li>
-                <li><a href="#">products</a></li>
-                <li><a href="#">where to buy</a></li>
-                <li><a href="#">contact</a></li>
+              <li><NuxtLink class="links__single_link" to="/">home</NuxtLink></li>
+              <li><NuxtLink class="links__single_link" to="/about">about</NuxtLink></li>
+              <li><NuxtLink class="links__single_link" to="/products">products</NuxtLink></li>
+              <li><NuxtLink class="links__single_link" to="/where-to-buy">where to buy</NuxtLink></li>
+              <li class="wishlist"><Nuxtlink>wishlist</Nuxtlink></li>
+              <li><Nuxtlink><img class="fav-icon" src="/assets/empty-fav.png"></Nuxtlink></li>
             </ul>
         </nav>
          <label for="nav-toggle" class="nav-toggle-label">
             <span></span>
         </label>
-            
     </header>
 </template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      isMenuOpen: false
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    }
+  }
+};
+</script>
+
+
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
@@ -23,13 +42,14 @@
 
 
 .fav-icon {
-    max-width: 30px;
+    max-width: 25px;
+    margin-left: 2rem;
+    cursor: pointer;
+    display:none;
 }
 
 header {
   text-align: center;
-  position: fixed;
-  z-index: 999;
   width: 100%; 
 }
 
@@ -39,16 +59,11 @@ header {
   left: -9999px !important;
 }
 
-.nav-toggle:focus ~ .nav-toggle-label {
-  outline: 3px solid rgba(green, .75);
-}
-
 .nav-toggle-label {
   position: absolute;
-  top: 0;
+  top: 45px;
   left: 0;
   margin-left: 1em;
-  height: 100%;
   display: flex;
   align-items: center;
 }
@@ -58,10 +73,12 @@ header {
 .nav-toggle-label span::after {
   display: block;
   background: #BCA06B;
-  height: 2px;
+  height: 4px;
   width: 2em;
   border-radius: 2px;
   position: relative;
+  cursor: pointer;
+
 }
 
 .nav-toggle-label span::before,
@@ -71,20 +88,19 @@ header {
 }
 
 .nav-toggle-label span::before {
-  bottom: 7px;
+  bottom: 5px;
+   
 }
 
 .nav-toggle-label span::after {
-  top: 7px;
+  top: 5px;
 }
 
 nav {
-  position: absolute;
   text-align: left;
-  top: 100%;
-  left: 0;
   background: var(--background);
   width: 100%;
+  height: 0;
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 400ms ease-in-out;
@@ -97,8 +113,8 @@ nav ul {
 }
 
 nav li {
-  margin-bottom: 1em;
-  margin-left: 1em;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
 }
 
 nav a {
@@ -110,7 +126,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #000;
+  color: $light-brown;
 }
 
 .nav-toggle:checked ~ nav {
@@ -121,34 +137,35 @@ nav a:hover {
   opacity: 1;
   transition: opacity 250ms ease-in-out 250ms;
 }
+.expanded {
+  height: auto; 
+}
 
-@media screen and (min-width: 800px) {
+
+@media screen and (min-width: 768px) {
+  .fav-icon {
+    display: block;
+  }
+  .wishlist {
+    display: none;
+  }
   .nav-toggle-label {
     display: none;
   }
 
-  header {
-    display: grid;
-    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  .container {
+    display: flex;
+    align-items: center;
+    padding: 0 5rem 0 2rem;
   }
-  
-  .logo {
-    grid-column: 2 / 3;
-  }
-  
   nav {
-    position: relative;
-    text-align: left;
-    transition: none;
-    transform: scale(1,1);
-    background: none;
-    top: initial;
-    left: initial;
-    
-    grid-column: 3 / 4;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    transition: none;
+    transform: scale(1,1);
+    background: none;
+ 
   }
   
   nav ul {
@@ -156,7 +173,7 @@ nav a:hover {
   }
   
   nav li {
-    margin-left: 3em;
+    margin-left: 2rem;
     margin-bottom: 0;
   }
   
@@ -176,10 +193,6 @@ nav a:hover {
     right: 0;
     transform: scale(0, 1);
     transition: transform ease-in-out 250ms;
-  }
-  
-  nav a:hover::before {
-    transform: scale(1,1);
   }
 }
 
