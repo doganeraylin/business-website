@@ -1,5 +1,5 @@
 <template>
-   <div class="container">
+   <div class="container" id="footer">
        <div class="links">
             <div class="links__single">
                 <p class="links__title">company</p>
@@ -7,7 +7,6 @@
                     <li><NuxtLink class="links__single_link" to="/about">our story</NuxtLink></li>
                     <li><NuxtLink class="links__single_link" to="/products">products</NuxtLink></li>
                     <li><NuxtLink class="links__single_link" to="/where-to-buy">find a dealer</NuxtLink></li>
-                
                 </ul>
             </div>
             <div class="links__single">
@@ -18,14 +17,6 @@
                     <li>+45 12 34 56 78</li>
                 </ul>
             </div>
-            <!-- <div>
-                <p class="links__title">legal</p>
-                <ul class="links_list">
-                  <li>privacy policy</li>
-                  <li>warranty</li>
-                  <li>terms and conditions</li>
-                </ul>
-            </div> -->
        </div>
        <div class="copyright">
            <p class="copyright__logo">lumière</p>
