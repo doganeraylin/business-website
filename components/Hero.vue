@@ -24,7 +24,7 @@
 
 .container {
    max-width: 1100px;
-   margin: 0 auto;
+   margin: 3rem auto;
 }
 
 .img_container {
@@ -36,7 +36,7 @@
 .text_container {
     &__title {
        max-width: 600px;
-       margin: 0 auto;
+       margin: 1.5rem auto;
        font-family: $titleFont;
        text-align: center;
     }
@@ -50,6 +50,7 @@
 
 @media (min-width: 768px) {
     .container {
+        margin: 6rem auto;
         display: flex;
         align-items: center;
     }

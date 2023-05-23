@@ -27,9 +27,8 @@
     margin: 0 auto;
     &__text {
         max-width: 350px;
-        margin: 0 auto;
+        margin: 5rem auto;
         text-transform: uppercase;
-        // border: 1px solid $light-brown;
         font-size: 3.5rem;
         text-align: center;
         font-family: 'Oswald', sans-serif;
@@ -54,7 +53,7 @@
     .container {
         &__text {
             max-width: 600px;
-            margin: 1rem auto;
+            margin: 10rem auto;
         }
         &__imgs {
             flex-direction: row;

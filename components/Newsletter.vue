@@ -19,7 +19,7 @@
 
 .container {
     max-width: 1100px;
-    margin: 5rem auto;
+    margin: 6.5rem auto;
     text-align: center;
     &__subtitle {
         max-width: 600px;
