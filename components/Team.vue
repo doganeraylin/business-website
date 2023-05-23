@@ -2,26 +2,46 @@
     <div class="container">
         <h1 class="container__title">inspired creators, captivating visions</h1>
         <div class="team_container">
-            <div class="single_card">
-                <img class="single_card__img" src="/assets/about/founder.png"> 
+            <div class="single_card" v-for="member in data" :key="member.id">
+                <img class="single_card__img" :src="member.img"> 
                 <div>
-                    <p class="single_card__name">Freya Magnusdottir</p>
-                    <p class="single_card__position">Founder / CEO</p>
+                    <p class="single_card__name">{{member.name}}</p>
+                    <p class="single_card__position">{{member.position}}</p>
                 </div>
-            </div>
-            <div class="single_card">
-                <img class="single_card__img" src="/assets/about/founder.png"> 
-                <div><p class="single_card__name">Freya Magnusdottir</p>
-                <p class="single_card__position">Founder / CEO</p></div>
-            </div>
-            <div class="single_card">
-                <img class="single_card__img" src="/assets/about/founder.png"> 
-                <div><p class="single_card__name">Freya Magnusdottir</p>
-                <p class="single_card__position">Founder / CEO</p></div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const data = ref(null);
+
+    async function fetchData() {
+      try {
+        const response = await fetch('https://business-website-json.vercel.app/team');
+        const jsonData = await response.json();
+        data.value = jsonData;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+    return {
+      data
+    };
+  }
+};
+</script>
+
+
+
+
+
+
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
@@ -65,3 +85,4 @@
 }
  
 </style>
+
