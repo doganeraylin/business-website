@@ -1,26 +1,41 @@
 <template>
-<div class="container">
-    <img class="container__img" src="/assets/findDealer/banner.png">
-    <h1 class="container__title">find a dealer</h1>
-     <Sortby text="30 dealers"
-    />
-    <div class="dealer_list_container">
-        <div class="single_dealer" v-for="dealer in dealers" :key="dealer.id"> 
-            <h2 class="single_dealer__country">{{dealer.country}}</h2>
-            <div class="dealer_details_container">
-                <div class="dealer_details_container__content" v-for="info in dealer.dealer" :key="info.company">
-                    <h3>{{info.company}}</h3>
-                    <h3>{{info.address}}</h3>
-                    <h3>{{info.phone}}</h3>
-                    <h3>{{info.website}}</h3>
+    <div class="container">
+        <img class="container__img" src="/assets/findDealer/banner.png">
+        <h1 class="container__title">find a dealer</h1>
+        <div class="dealer_list_container">
+            <div v-if="filteredDealers.length > 0">
+                <div class="single_dealer" v-for="dealer in dealers" :key="dealer.id">
+                    <div v-if="filteredDealers.includes(dealer.country) && filteredDealers.length > 0" >
+                        <h2 class="single_dealer__country">{{dealer.country}}</h2>
+                        <div class="dealer_details_container">
+                            <div class="dealer_details_container__content" v-for="info in dealer.dealer" :key="info.company">
+                                <h3>{{info.company}}</h3>
+                                <h3>{{info.address}}</h3>
+                                <h3>{{info.phone}}</h3>
+                                <h3>{{info.website}}</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        
+            <div v-else>
+                <div class="single_dealer" v-for="dealer in dealers" :key="dealer.id">
+                    <h2 class="single_dealer__country">{{dealer.country}}</h2>
+                    <div class="dealer_details_container">
+                        <div class="dealer_details_container__content" v-for="info in dealer.dealer" :key="info.company">
+                            <h3>{{info.company}}</h3>
+                            <h3>{{info.address}}</h3>
+                            <h3>{{info.phone}}</h3>
+                            <h3>{{info.website}}</h3>
+                        </div>
+                    </div>
+            </div>
         </div>
+    </div> 
     </div>
-</div>
-
 </template>
+
+
 
 <script>
 export default {
@@ -28,6 +43,10 @@ export default {
     dealers: {
       type: Array,
       required: true
+    },
+    filteredDealers: {
+        type: Array,
+        required: true
     }
   }
 }
