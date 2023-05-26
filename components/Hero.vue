@@ -1,6 +1,7 @@
 <template>
-    <div class="container">
-        <div class="text_container">
+    <div class="wrapper">
+        <div class="container" ref="containerRef">
+            <div class="text_container">
             <h1 class="text_container__title">Timeless Elegance for Your Home Sanctuary</h1>
             <div class="button_container">
                 <Button 
@@ -11,26 +12,71 @@
                 />
             </div>
         </div>
-        <div class="img_container">
+        <div class="img_container" ref="imgsRef"> 
             <img class="img_container__img" src="/assets/hero/chair-1.png">
             <img class="img_container__img" src="/assets/hero/chair-2.png">
+            <img class="img_container__img" src="/assets/hero/chair-1.png">
+            <img class="img_container__img" src="/assets/hero/chair-2.png">
+            <img class="img_container__img" src="/assets/hero/chair-1.png">
         </div>
+        </div>
+  
     </div>
 </template>
+
+<script setup>
+import { onMounted, onUnmounted, ref } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const imgsRef = ref();
+const containerRef = ref();
+
+onMounted(() => {
+
+const imgs = imgsRef.value.querySelectorAll('.img_container__img');
+gsap.to(imgs, {
+    xPercent: -100 * (imgs.length - 1),
+    ease: "none",
+    scrollTrigger: {
+        trigger: containerRef.value,
+        pin: true,
+        scrub: 1,
+        end: "+3000",
+        markers: true,
+    }
+})
+})
+
+</script>
+
+
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
 @import "@/assets/main.scss";
 
+.wrapper {
+  overflow-x: hidden;
+}
+
 .container {
    max-width: 1100px;
    margin: 3rem auto;
+//    width: 300vw;
+ 
 }
 
 .img_container {
+    border: 1px solid yellow;
+    max-width: 500px;
+    margin: 0 auto;
     &__img {
         max-width: 180px;
         margin: 2rem 0;
+
     }
 }
 .text_container {
