@@ -1,18 +1,3 @@
-<template>
-    <div class="container">
-        <h1 class="container__title">inspired creators, captivating visions</h1>
-        <div class="team_container">
-            <div class="single_card" v-for="member in data" :key="member.id">
-                <img class="single_card__img" :src="member.img"> 
-                <div>
-                    <p class="single_card__name">{{member.name}}</p>
-                    <p class="single_card__position">{{member.position}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script>
 import { ref } from 'vue';
 
@@ -37,15 +22,27 @@ export default {
 };
 </script>
 
-
-
-
-
-
+<template>
+    <div class="container" > 
+        <h1 class="container__title">inspired creators, captivating visions</h1>
+        <div class="team_container">
+            <div class="single_card" v-for="member in data" :key="member.id">
+                <div class="single_card__content">
+                    <img class="single_card__img" :src="member.img"> 
+                    <div>
+                        <p class="single_card__name">{{member.name}}</p>
+                        <p class="single_card__position">{{member.position}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
 @import "@/assets/main.scss";
+
 
 .team_container {
     display: flex;
@@ -53,8 +50,10 @@ export default {
     align-items: center;
     max-width: 1100px;
     margin: 0 auto;
+    overflow-x: hidden;
 }
 .single_card {
+    margin: 0 1rem;
     text-align: center;
     &__img {
         max-width: 320px;
@@ -85,4 +84,3 @@ export default {
 }
  
 </style>
-
