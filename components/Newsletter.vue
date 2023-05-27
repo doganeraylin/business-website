@@ -1,7 +1,62 @@
+<script setup>
+import { onMounted, onUnmounted, ref } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const titleRef = ref()
+const subtitleRef = ref()
+const textRef = ref();
+const ctx = ref();
+
+onMounted(() => {
+    ctx.value = gsap.context(() => {
+        textRef.value = gsap.to(textRef.value, {
+        opacity: 0,
+        y: -50,
+        ease:"power3",
+        durating: 2,
+        yoyo: true,
+        scrollTrigger: {
+            trigger: textRef.value,
+            start: "top 30%",
+            end: "bottom top",
+            scrub: true,
+        }
+        }),
+        titleRef.value = gsap.to(titleRef.value, {
+            scrollTrigger: {
+                trigger: titleRef.value,
+                toggleClass: "title_container__active",
+                start: "top 90%"
+            }
+        }),
+        subtitleRef.value = gsap.to(subtitleRef.value, {
+            scrollTrigger: {
+                trigger: subtitleRef.value,
+                toggleClass: "subtitle_container__typing",
+                start: "top 90%"
+            }
+        })
+    })
+})
+onUnmounted(() => {
+  ctx.value.revert(); 
+});
+
+
+</script>
+
 <template>
     <div class="container">
-        <h1 class="container__title">Unlock a World of Inspiration:</h1>
-        <h2 class="container__subtitle"> Join Our Newsletter for Design Tips, Trends, and Exclusive Deals.</h2>
+        <div class="title_container" >
+             <h1 class="title_container__title" ref="titleRef">Unlock a World of Inspiration:</h1>
+        </div>
+        <div class="subtitle_container" >
+            <h2 class="subtitle_container__subtitle" ref="subtitleRef"> Join Our Newsletter for Design Tips, Trends, and Exclusive Deals.</h2>
+        </div>
+        
         <div class="input_container">
             <input type="email" placeholder="example@example.com">
             <Button 
@@ -21,12 +76,50 @@
     max-width: 1100px;
     margin: 6.5rem auto;
     text-align: center;
+}
+.title_container {
+    &__title {
+    font-size: 3rem;
+    }
+    &__active {
+    width: 25ch;
+    margin: 0 auto;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+   }
+    
+}
+.subtitle_container {
     &__subtitle {
         max-width: 600px;
         font-weight: lighter;
         margin: 0.5rem auto 1rem auto;
     }
+    &_typing {
+        width: 25ch;
+        margin: 0 auto;
+        animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid;
+    }
 }
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+
 
 .input_container {
     display: flex;
