@@ -13,7 +13,7 @@ const ctx = ref();
 onMounted(() => {
     ctx.value = gsap.context(()=> {
         brandValuesRefOne.value = gsap.from(brandValuesRefOne.value, {
-            x: -300,
+            x: -50,
             duration: 1,
             ease: "power2.out",
             scrollTrigger: {
@@ -23,7 +23,7 @@ onMounted(() => {
             }
         }),
         brandValuesRefTwo.value = gsap.from(brandValuesRefTwo.value, {
-            x: 300,
+            x: 50,
             duration: 1,
             ease: "power2.out",
             scrollTrigger: {
@@ -33,7 +33,7 @@ onMounted(() => {
             }
         }),
         brandValuesRefThree.value = gsap.from(brandValuesRefThree.value, {
-            x: -300,
+            x: -50,
             duration: 1,
             ease: "power2.out",
             scrollTrigger: {
