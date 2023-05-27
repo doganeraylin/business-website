@@ -1,7 +1,20 @@
+<script>
+export default {
+  props: {
+    dealers: {
+      type: Array,
+      required: true
+    },
+    filteredDealers: {
+      type: Array,
+      required: true
+    }
+  },
+}
+</script>
+
 <template>
     <div class="container">
-        <img class="container__img" src="/assets/findDealer/banner.png">
-        <h1 class="container__title">find a dealer</h1>
         <div class="dealer_list_container">
             <div v-if="filteredDealers.length > 0">
                 <div class="single_dealer" v-for="dealer in dealers" :key="dealer.id">
@@ -29,42 +42,15 @@
                             <h3>{{info.website}}</h3>
                         </div>
                     </div>
+                </div>
             </div>
-        </div>
-    </div> 
+        </div> 
     </div>
 </template>
-
-
-
-<script>
-export default {
-  props: {
-    dealers: {
-      type: Array,
-      required: true
-    },
-    filteredDealers: {
-        type: Array,
-        required: true
-    }
-  }
-}
-</script>
-
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
 @import "@/assets/main.scss";
-
-.container {
-    &__img {
-        max-width: 100%;
-    }
-    &__title {
-        margin: 1rem auto;
-    }
-}
 
 .dealer_list_container {
     display: flex;
@@ -72,7 +58,6 @@ export default {
     max-width: 700px;
     margin: 0 auto;
 }
-
 .single_dealer {
     max-width: 350px;
     margin: 0 1.5rem;
@@ -82,7 +67,6 @@ export default {
         border-bottom: 1px solid ; 
     }
 }
-
 .dealer_details_container {
     display: flex;
     flex-direction:  column;
@@ -90,14 +74,10 @@ export default {
         font-weight: lighter;
         font-size: 0.8rem;
     }
-
     &__content {
         margin: 0.5rem 3rem 0.5rem 0;
     }
-
-
 }
-
 @media (min-width: 768px) {
     .dealer_details_container {
         flex-wrap: wrap;
@@ -109,5 +89,4 @@ export default {
 
     }
 }
-
 </style>
