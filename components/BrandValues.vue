@@ -1,6 +1,58 @@
+<script setup>
+import { onMounted, onUnmounted, ref } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const brandValuesRefOne = ref();
+const brandValuesRefTwo = ref();
+const brandValuesRefThree = ref();
+const ctx = ref();
+
+onMounted(() => {
+    ctx.value = gsap.context(()=> {
+        brandValuesRefOne.value = gsap.from(brandValuesRefOne.value, {
+            x: -300,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: brandValuesRefOne.value,
+                scrub: 1,
+                start: "top bottom"
+            }
+        }),
+        brandValuesRefTwo.value = gsap.from(brandValuesRefTwo.value, {
+            x: 300,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: brandValuesRefTwo.value,
+                scrub: 1,
+                start: "top bottom"
+            }
+        }),
+        brandValuesRefThree.value = gsap.from(brandValuesRefThree.value, {
+            x: -300,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: brandValuesRefThree.value,
+                scrub: 1,
+                start: "top bottom"
+            }
+        })
+    })
+})
+onUnmounted(() => {
+  ctx.value.revert(); 
+});
+</script>
+
+
 <template>
-    <div class="container">
-        <div class="container__brand_value">
+    <div class="container" >
+        <div class="container__brand_value" ref="brandValuesRefOne">
             <div class="container__title_wrapper">
                 <h1 class="container__title">crafted with care</h1>
                 <div class="container__line"></div>
@@ -10,7 +62,7 @@
                 <p class="container__statement">Each chair meticulously handcrafted using time-honored techniques.</p>
             </div>
         </div>
-         <div class="container__brand_value">
+         <div class="container__brand_value" ref="brandValuesRefTwo">
             <div class="container__title_wrapper">
                 <div class="container__line container__materials_line"></div>
                 <h1 class="container__title container__materials_title">materials that matter</h1>
@@ -20,9 +72,9 @@
                 <img class="container__img" src="/assets/brandValues/material.png">
             </div>
         </div>
-         <div class="container__brand_value">
+         <div class="container__brand_value" ref="brandValuesRefThree">
             <div class="container__title_wrapper">
-                <h1 class="container__title">exquisite craftsmanship</h1>
+                <h1 class="container__title ">exquisite craftsmanship</h1>
                 <div class="container__line container__craftsmanship_line"></div>
             </div> 
             <div class="container__brand_content">
@@ -42,9 +94,9 @@
 
 .container {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 3rem auto;
     &__brand_value {
-        margin: 2rem 0;
+        margin: 4rem 0;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -53,6 +105,7 @@
         font-family: $titleFont;
         font-size: 2rem;
         text-transform: uppercase;
+        text-align: start !important;
     }
     &__title_wrapper {
         display: flex;
@@ -83,7 +136,7 @@
 
     }
     &__materials_title {
-        text-align: right;
+        text-align: right !important;
     }
     &__materials_line,
     &__craftsmanship_line  {
@@ -93,12 +146,13 @@
         width: 400px;
         height: 2px;
         background-color: $light-brown;
-
     }
 }
 
+
 @media (min-width: 992px) {
     .container {
+        margin: 10rem auto;
         &__brand_content {
         display: flex;
         align-items: center;
