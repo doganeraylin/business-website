@@ -1,10 +1,41 @@
-
+@import "@/assets/variables.scss";
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border;
+   
+    box-sizing: border-box;
     font-family: 'Oswald', sans-serif;
     font-family: 'Poppins', sans-serif;
+}
+
+html {
+    background-color:  #EFEFEF;
+}
+
+body {
+  
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.container {
+    &__title {
+        max-width: 600px;
+        margin: 0 auto;
+        font-family: $titleFont;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
+
+
+
+
+@media (min-width: 992px) {
+    .container {
+        &__title {
+            font-size: 3rem;
+        }
+    }
+    
 }
