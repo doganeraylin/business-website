@@ -1,7 +1,53 @@
+<script setup>
+import { onMounted, onUnmounted, ref } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const imgsRef = ref();
+const containerRef = ref();
+const textRef = ref();
+const ctx = ref();
+
+onMounted(() => {
+    const imgs = imgsRef.value.querySelectorAll('.container__img');
+    ctx.value = gsap.context(() => {
+        textRef.value = gsap.to(textRef.value, {
+        opacity: 0,
+        y: -50,
+        ease:"power3",
+        durating: 2,
+        yoyo: true,
+        scrollTrigger: {
+            trigger: textRef.value,
+            start: "top 30%",
+            end: "bottom top",
+            scrub: true,
+        }
+        })
+        gsap.from(imgs, {
+        opacity: 0,
+        y: 200,
+        ease: "power1.out",
+        duration: 1.5,
+        scrollTrigger: {
+            trigger: imgs,
+            scrub: 1,
+            start: "top bottom"
+        }
+        })
+    })
+})
+onUnmounted(() => {
+  ctx.value.revert(); 
+});
+</script>
+
 <template>
-    <div class="container">
-        <h1 class="container__text">Transform Your Living Spaces with Opulence.</h1>
-        <div class="container__imgs">
+    <div class="container" ref="containerRef">
+        <h1 ref="textRef" class="container__text">Transform Your Living Spaces with Opulence.</h1>
+        <div class="container__imgs" ref="imgsRef">
             <img class="container__img" src="/assets/cta/chair-1.png">
             <img class="container__img" src="/assets/cta/chair-2.png">
             <img class="container__img" src="/assets/cta/chair-3.png">
@@ -14,8 +60,7 @@
                 clickHandler="goToProducts"
             />
         </div>
-    </div>
-   
+    </div>   
 </template>
 
 <style lang="scss" scoped>
@@ -34,6 +79,7 @@
         font-family: 'Oswald', sans-serif;
     }
     &__imgs {
+        margin: 2rem 0 5rem 0;
         display: flex;
         flex-direction: column;
     }
@@ -54,6 +100,7 @@
         &__text {
             max-width: 600px;
             margin: 10rem auto;
+            border: 1px solid green;
         }
         &__imgs {
             flex-direction: row;
