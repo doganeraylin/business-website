@@ -74,7 +74,7 @@ onUnmounted(() => {
         max-width: 350px;
         margin: 5rem auto;
         text-transform: uppercase;
-        font-size: 3.5rem;
+        font-size: 5rem;
         text-align: center;
         font-family: 'Oswald', sans-serif;
     }
