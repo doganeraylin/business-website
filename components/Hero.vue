@@ -15,9 +15,9 @@
         <div class="img_container" ref="imgsRef"> 
             <img class="img_container__img" src="/assets/hero/chair-1.png">
             <img class="img_container__img" src="/assets/hero/chair-2.png">
-            <img class="img_container__img" src="/assets/hero/chair-1.png">
-            <img class="img_container__img" src="/assets/hero/chair-2.png">
-            <img class="img_container__img" src="/assets/hero/chair-1.png">
+            <img class="img_container__img" src="/assets/hero/chair-3.png">
+            <img class="img_container__img" src="/assets/hero/chair-4.png">
+            <img class="img_container__img" src="/assets/hero/chair-5.png">
         </div>
         </div>
   
@@ -45,14 +45,11 @@ gsap.to(imgs, {
         pin: true,
         scrub: 1,
         end: "+3000",
-        markers: true,
     }
 })
 })
 
 </script>
-
-
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
@@ -65,17 +62,16 @@ gsap.to(imgs, {
 .container {
    max-width: 1100px;
    margin: 3rem auto;
-//    width: 300vw;
- 
 }
 
 .img_container {
-    border: 1px solid yellow;
+    display: flex;
     max-width: 500px;
+    overflow-x: hidden;
     margin: 0 auto;
     &__img {
         max-width: 180px;
-        margin: 2rem 0;
+        margin: 0 0.5rem;
 
     }
 }
@@ -104,7 +100,7 @@ gsap.to(imgs, {
         margin-left: 1.5rem;
         &__title {
         max-width: 300px;
-        font-size: 2.5rem;
+        font-size: 3rem;
         margin: 0 auto;
         font-family: $titleFont;
         text-align: start;
@@ -114,33 +110,11 @@ gsap.to(imgs, {
         text-align: start;
     }
     .img_container {
-        display: flex;
         &__img {
-            max-width: 270px;
+            max-width: 300px;
+        }
     }
-  
 }
 
 
-}
-// @media (min-width: 1200px) {
-//     .container {
-//         display: flex;
-//         justify-content: space-around;
-//         align-items: flex-start;
-
-//         &__img {
-//         max-width: 400px;
-//         }
-//         &__imgs {
-//             display: flex;
-//         }
-//         &__title {
-//         text-align:end;
-//         font-size: 2.5rem;
-//         max-width: 200px;
-//         }
-
-//     }
-// }
 </style>
