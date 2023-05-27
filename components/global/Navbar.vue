@@ -120,7 +120,7 @@ nav li {
 nav a {
   color: black;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   opacity: 0;
   transition: opacity 150ms ease-in-out;
 }
@@ -165,9 +165,7 @@ nav a:hover {
     transition: none;
     transform: scale(1,1);
     background: none;
- 
   }
-  
   nav ul {
     display: flex;
   }
@@ -176,12 +174,10 @@ nav a:hover {
     margin-left: 2rem;
     margin-bottom: 0;
   }
-  
   nav a {
     opacity: 1;
     position: relative;
   }
-  
   nav a::before {
     content: '';
     display: block;
