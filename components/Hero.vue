@@ -31,23 +31,28 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const ctx = ref()
 const imgsRef = ref();
 const containerRef = ref();
 
 onMounted(() => {
-
-const imgs = imgsRef.value.querySelectorAll('.img_container__img');
-gsap.to(imgs, {
-    xPercent: -100 * (imgs.length - 1),
-    ease: "none",
-    scrollTrigger: {
-        trigger: containerRef.value,
-        pin: true,
-        scrub: 1,
-        end: "+3000",
-    }
+    ctx.value = gsap.context(() => {
+        const imgs = imgsRef.value.querySelectorAll('.img_container__img');
+        gsap.to(imgs, {
+        xPercent: -100 * (imgs.length - 1),
+        ease: "none",
+            scrollTrigger: {
+                trigger: containerRef.value,
+                pin: true,
+                scrub: 1,
+                end: "+3000",
+            }
+        })
+    })
 })
-})
+onUnmounted(() => {
+  ctx.value.revert(); 
+});
 
 </script>
 
