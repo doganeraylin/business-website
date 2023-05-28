@@ -7,7 +7,13 @@
             <div class="product_card__info_container">
                 <div class="product_card__info">
                     <p class="product_card__name">{{product.name}}</p>
-                    <p class="product_card__price">starting from ${{product.price}}</p>
+                    <NuxtLink :to="`/products/${product.id}`">
+                        <Button 
+                            buttonClass="button-small"
+                            buttonText="view details"
+                        />
+                    </NuxtLink>
+                    <!-- <p class="product_card__price">starting from ${{product.price}}</p> -->
                 </div>
              
                 <img class="product_card__icon" 
