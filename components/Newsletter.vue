@@ -2,16 +2,23 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 gsap.registerPlugin(ScrollTrigger);
 
 const titleRef = ref()
 const subtitleRef = ref()
 const textRef = ref();
-const ctx = ref();
+const ctx = ref()
+
+
 
 onMounted(() => {
-    ctx.value = gsap.context(() => {
+    let mediaQueries = gsap.matchMedia()
+ 
+    mediaQueries.add("(min-width: 800px)", (context) => {
+    
+    context.add( () => {
+       
+ 
         textRef.value = gsap.to(textRef.value, {
         opacity: 0,
         y: -50,
@@ -40,10 +47,57 @@ onMounted(() => {
             }
         })
     })
-})
-onUnmounted(() => {
-  ctx.value.revert(); 
-});
+
+
+
+    });
+
+
+
+    
+    });
+    
+
+
+
+     
+
+
+
+// onMounted(() => {
+//     ctx.value = gsap.context(() => {
+//         textRef.value = gsap.to(textRef.value, {
+//         opacity: 0,
+//         y: -50,
+//         ease:"power3",
+//         durating: 2,
+//         yoyo: true,
+//         scrollTrigger: {
+//             trigger: textRef.value,
+//             start: "top 30%",
+//             end: "bottom top",
+//             scrub: true,
+//         }
+//         }),
+//         titleRef.value = gsap.to(titleRef.value, {
+//             scrollTrigger: {
+//                 trigger: titleRef.value,
+//                 toggleClass: "title_container__active",
+//                 start: "top 90%"
+//             }
+//         }),
+//         subtitleRef.value = gsap.to(subtitleRef.value, {
+//             scrollTrigger: {
+//                 trigger: subtitleRef.value,
+//                 toggleClass: "subtitle_container__typing",
+//                 start: "top 90%"
+//             }
+//         })
+//     })
+// })
+// onUnmounted(() => {
+//   ctx.value.revert(); 
+// });
 
 
 </script>
@@ -62,7 +116,8 @@ onUnmounted(() => {
             <Button 
                 buttonClass="primary-style"
                 buttonText="subscribe"
-                clickHandler="goToProducts"
+                clickHandler="toggleConfirmationModal"
+                
             />
         </div>
     </div>
@@ -74,7 +129,7 @@ onUnmounted(() => {
 
 .container {
     max-width: 1100px;
-    margin: 6.5rem auto;
+    margin: 10rem auto;
     text-align: center;
 }
 .title_container {
@@ -118,8 +173,6 @@ onUnmounted(() => {
     border-color: transparent
   }
 }
-
-
 
 .input_container {
     display: flex;
