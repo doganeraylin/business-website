@@ -2,7 +2,6 @@
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 gsap.registerPlugin(ScrollTrigger);
 
 const imgsRef = ref();
@@ -72,9 +71,9 @@ onUnmounted(() => {
     margin: 0 auto;
     &__text {
         max-width: 350px;
-        margin: 5rem auto;
+        margin: 5rem auto 0 auto;
         text-transform: uppercase;
-        font-size: 5rem;
+        font-size: 3rem;
         text-align: center;
         font-family: 'Oswald', sans-serif;
     }
@@ -99,7 +98,7 @@ onUnmounted(() => {
     .container {
         &__text {
             max-width: 600px;
-            margin: 10rem auto;
+            font-size: 5rem;
             border: 1px solid green;
         }
         &__imgs {
