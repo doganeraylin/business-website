@@ -1,3 +1,7 @@
+<script setup>
+  const { product } = defineProps(['product'])
+</script>
+
 <template>
     <Navbar/>
     <div class="product_card_container">
@@ -7,16 +11,20 @@
                 <p class="product_details__model">Model {{product.model}}</p>
                 <p class="product_details__name">{{product.name}}</p>
                 <p class="product_details__description">{{product.description}}</p>
-                <p>Materials</p>
-                <p class="product_details__materials">{{product.materials}}</p>
-                <p>Specifications</p>
-                <ul class="specifications">
-                    <li v-for="spec in product.specifications" :key="spec.width">
-                        Width: {{ spec.width }}
-                        Depth: {{ spec.depth }}
-                        Height: {{ spec.height }}
-                    </li>
-                </ul>
+                <div class="product_details__materials_container">
+                    <p>Materials</p>
+                    <p class="product_details__materials">{{product.materials}}</p>
+                </div>
+                <div class="product_details__specifications_container">
+                    <p>Specifications</p>
+                    <ul class="specifications">
+                        <li v-for="spec in product.specifications" :key="spec.width">
+                            Width: {{ spec.width }}
+                            Depth: {{ spec.depth }}
+                            Height: {{ spec.height }}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
             <div class="wishlist">
@@ -26,13 +34,6 @@
         </div>
 </template>
 
-
-<script setup>
-  const { product } = defineProps(['product'])
-</script>
-
-
-
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
 @import "@/assets/main.scss";
@@ -40,24 +41,20 @@
 .product_card_container {
     max-width: 800px;
     margin: 0 auto;
-    border: 1px solid green;
 }
-
 .product_card {
-    border: 1px solid gray;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 1rem;
     max-width: 325px;
     margin: 0 auto;
-    &__img {
-        max-width: 325px;
-        border: 1px solid $light-brown;
-        margin: 0 0 1rem 0;
-    }
+        &__img {
+            max-width: 325px;
+            border: 1px solid $light-brown;
+            margin: 0 0 1rem 0;
+        }
 }
-
 .product_details {
     &__model {
         opacity: 0.5;
@@ -70,7 +67,6 @@
         font-size: 0.8rem;
     }
 }
-
 .specifications {
     max-width: 100px;
     padding: 0;
@@ -79,17 +75,16 @@
         font-size: 0.8rem;
     }
 }
-
 .wishlist {
     display: flex;
     align-items: center;
     justify-content: center;
     color: $light-brown;
     text-decoration: underline;
-    &__icon {
-        max-width: 20px;
-        margin: 0 0.5rem 0 0;
-    }
+        &__icon {
+            max-width: 20px;
+            margin: 0 0.5rem 0 0;
+        }
 }
 
 @media (min-width: 768px) {
@@ -100,16 +95,16 @@
         flex-direction: row;
         padding: 0;
         max-width: 1100px;
-        &__img {
-            margin: 0;
-            max-width: 375px;
-        }
+            &__img {
+                margin: 0;
+                max-width: 375px;
+            }
     }
     .product_details {
         padding: 0 2rem;
-          &__name {
-            font-size: 1.5rem;
-        }
+            &__name {
+                font-size: 1.5rem;
+            }
     }
     .links {
     max-width:  1100px;
