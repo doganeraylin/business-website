@@ -13,16 +13,16 @@
                 <p class="links__title">contact</p>
                 <ul class="links__list">
                     <li class="links_list__contact">Lumière Nørrebrogade 22, 2200 / Copenhagen </li>
-                    <li>lumiere.furniture@gmail.com</li>
+                    <li>lumière.furniture@gmail.com</li>
                     <li>+45 12 34 56 78</li>
                 </ul>
             </div>
        </div>
        <div class="copyright">
            <p class="copyright__logo">lumière</p>
-           <p class="copyright__text">Copyright © Lumiere Furniture 2023</p>
+           <p class="copyright__text">Copyright © Lumière Furniture 2023</p>
        </div>
-   </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
