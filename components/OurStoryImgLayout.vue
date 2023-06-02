@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <img class="container__img" src="/assets/about/craftsman-1.png">
-        <img class="container__img" src="/assets/about/craftsman-2.png">
-        <img class="container__img" src="/assets/about/details.png">
-        <img class="container__img" src="/assets/about/craftsman-3.png">
-        <img class="container__img" src="/assets/about/craftsman-4.png">
+        <img class="container__img" src="/assets/about/craftsman-img-1.png">
+        <img class="container__img" src="/assets/about/craftsman-img-2.png">
+        <img class="container__img" src="/assets/about/details-img.png">
+        <img class="container__img" src="/assets/about/craftsman-img-3.png">
+        <img class="container__img" src="/assets/about/craftsman-img-4.png">
     </div>
 </template>
 
