@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Navbar/>
-    <img class="container__img" src="/assets/findDealer/banner.png">
+    <img class="container__img" src="/assets/banners/dealers-banner.png">
     <h1 class="container__title">find a dealer</h1>
     <div class="filter_container">
       <button class="filter_container__toggle" @click="toggleFilter">filter</button>
@@ -36,7 +36,7 @@
 
 .container {
   &__img {
-  max-width: 100%;
+  width: 100%;
   }
   &__title {
   margin: 1rem auto;
