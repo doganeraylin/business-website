@@ -1,13 +1,13 @@
 <template>
    <div class="container">
         <div class="img_container">
-            <img class="img_container__img img_container__img_first_craftsman" src="/assets/about/craftsman-1.png">
-            <img class="img_container__img img_container__img_second_craftsman" src="/assets/about/craftsman-2.png">  
+            <img class="img_container__img img_container__img_first_craftsman" src="/assets/about/craftsman-img-1.png">
+            <img class="img_container__img img_container__img_second_craftsman" src="/assets/about/craftsman-img-2.png">  
         </div>
         <div class="img_container">
-            <img class="img_container__img img_container__img_details" src="/assets/about/details.png">
-            <img class="img_container__img img_container__img_third_craftsman" src="/assets/about/craftsman-3.png">
-            <img class="img_container__img img_container__img_fourth_craftsman" src="/assets/about/craftsman-4.png">
+            <img class="img_container__img img_container__img_details" src="/assets/about/details-img.png">
+            <img class="img_container__img img_container__img_third_craftsman" src="/assets/about/craftsman-img-3.png">
+            <img class="img_container__img img_container__img_fourth_craftsman" src="/assets/about/craftsman-img-4.png">
         </div>
     </div>
 </template>
