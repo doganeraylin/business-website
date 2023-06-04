@@ -11,95 +11,51 @@ const ctx = ref()
 
 
 
+
+const isModalOpen = ref(false);
+
+const openModal = () => {
+  isModalOpen.value = true;
+};
+
+const closeModal = () => {
+  isModalOpen.value = false;
+};
+
 onMounted(() => {
     let mediaQueries = gsap.matchMedia()
- 
     mediaQueries.add("(min-width: 800px)", (context) => {
-    
-    context.add( () => {
-       
- 
-        textRef.value = gsap.to(textRef.value, {
-        opacity: 0,
-        y: -50,
-        ease:"power3",
-        durating: 2,
-        yoyo: true,
-        scrollTrigger: {
-            trigger: textRef.value,
-            start: "top 30%",
-            end: "bottom top",
-            scrub: true,
-        }
-        }),
-        titleRef.value = gsap.to(titleRef.value, {
-            scrollTrigger: {
-                trigger: titleRef.value,
-                toggleClass: "title_container__active",
-                start: "top 90%"
-            }
-        }),
-        subtitleRef.value = gsap.to(subtitleRef.value, {
-            scrollTrigger: {
-                trigger: subtitleRef.value,
-                toggleClass: "subtitle_container__typing",
-                start: "top 90%"
-            }
+        context.add( () => {
+            textRef.value = gsap.to(textRef.value, {
+                opacity: 0,
+                y: -50,
+                ease:"power3",
+                durating: 2,
+                yoyo: true,
+                scrollTrigger: {
+                    trigger: textRef.value,
+                    start: "top 30%",
+                    end: "bottom top",
+                    scrub: true,
+                }
+            }),
+            titleRef.value = gsap.to(titleRef.value, {
+                scrollTrigger: {
+                    trigger: titleRef.value,
+                    toggleClass: "title_container__active",
+                    start: "top 90%"
+                }
+            }),
+            subtitleRef.value = gsap.to(subtitleRef.value, {
+                scrollTrigger: {
+                    trigger: subtitleRef.value,
+                    toggleClass: "subtitle_container__typing",
+                    start: "top 90%"
+                }
+            })
         })
-    })
-
-
-
     });
-
-
-
-    
-    });
-    
-
-
-
-     
-
-
-
-// onMounted(() => {
-//     ctx.value = gsap.context(() => {
-//         textRef.value = gsap.to(textRef.value, {
-//         opacity: 0,
-//         y: -50,
-//         ease:"power3",
-//         durating: 2,
-//         yoyo: true,
-//         scrollTrigger: {
-//             trigger: textRef.value,
-//             start: "top 30%",
-//             end: "bottom top",
-//             scrub: true,
-//         }
-//         }),
-//         titleRef.value = gsap.to(titleRef.value, {
-//             scrollTrigger: {
-//                 trigger: titleRef.value,
-//                 toggleClass: "title_container__active",
-//                 start: "top 90%"
-//             }
-//         }),
-//         subtitleRef.value = gsap.to(subtitleRef.value, {
-//             scrollTrigger: {
-//                 trigger: subtitleRef.value,
-//                 toggleClass: "subtitle_container__typing",
-//                 start: "top 90%"
-//             }
-//         })
-//     })
-// })
-// onUnmounted(() => {
-//   ctx.value.revert(); 
-// });
-
-
+});
 </script>
 
 <template>
@@ -115,11 +71,14 @@ onMounted(() => {
             <input type="email" placeholder="example@example.com">
             <Button 
                 buttonClass="primary-style"
-                buttonText="subscribe"
-                clickHandler="toggleConfirmationModal"
-                
+                buttonText="subscribe" 
+                @click="isModalOpen = true"
+ 
             />
         </div>
+    </div>
+    <div v-if="isModalOpen">
+        <Confirmation @close="closeModal"/>
     </div>
 </template>
 
