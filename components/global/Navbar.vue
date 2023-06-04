@@ -1,7 +1,7 @@
 <template>
     <header class="container">
-        <h1 class="logo">lumière</h1>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle" @click="toggleMenu">
+        <h1 class="container__logo">lumière</h1>
+        <input type="checkbox" id="nav_toggle" class="nav_toggle" @click="toggleMenu">
         <nav :class="{ 'expanded': isMenuOpen }">
             <ul>
               <li><NuxtLink class="links__single_link" to="/">home</NuxtLink></li>
@@ -12,7 +12,7 @@
               <li><Nuxtlink><img class="fav-icon" src="/assets/empty-fav.png"></Nuxtlink></li>
             </ul>
         </nav>
-         <label for="nav-toggle" class="nav-toggle-label">
+         <label for="nav_toggle" class="nav_toggle_label">
             <span></span>
         </label>
     </header>
@@ -34,32 +34,29 @@ export default {
 };
 </script>
 
-
-
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
 @import "@/assets/main.scss";
 
-
-.fav-icon {
-    max-width: 25px;
-    margin-left: 2rem;
-    cursor: pointer;
-    display:none;
-}
-
-header {
+.container {
   text-align: center;
   width: 100%; 
+  &__logo {
+  text-transform: uppercase;
+  } 
 }
-
-.nav-toggle {
+.fav-icon {
+  max-width: 25px;
+  margin-left: 2rem;
+  cursor: pointer;
+  display:none;
+}
+.nav_toggle {
   position: absolute !important;
   top: -9999px !important;
   left: -9999px !important;
 }
-
-.nav-toggle-label {
+.nav_toggle_label {
   position: absolute;
   top: 45px;
   left: 0;
@@ -67,10 +64,9 @@ header {
   display: flex;
   align-items: center;
 }
-
-.nav-toggle-label span,
-.nav-toggle-label span::before,
-.nav-toggle-label span::after {
+.nav_toggle_label span,
+.nav_toggle_label span::before,
+.nav_toggle_label span::after {
   display: block;
   background: #BCA06B;
   height: 4px;
@@ -80,22 +76,18 @@ header {
   cursor: pointer;
 
 }
-
-.nav-toggle-label span::before,
-.nav-toggle-label span::after {
+.nav_toggle_label span::before,
+.nav_toggle_label span::after {
   content: '';
   position: absolute;
 }
-
-.nav-toggle-label span::before {
+.nav_toggle_label span::before {
   bottom: 5px;
    
 }
-
-.nav-toggle-label span::after {
+.nav_toggle_label span::after {
   top: 5px;
 }
-
 nav {
   text-align: left;
   background: var(--background);
@@ -105,18 +97,15 @@ nav {
   transform-origin: top;
   transition: transform 400ms ease-in-out;
 }
-
 nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 nav li {
   margin-bottom: 1rem;
   margin-left: 1rem;
 }
-
 nav a {
   color: black;
   text-decoration: none;
@@ -124,16 +113,13 @@ nav a {
   opacity: 0;
   transition: opacity 150ms ease-in-out;
 }
-
 nav a:hover {
   color: $light-brown;
 }
-
-.nav-toggle:checked ~ nav {
+.nav_toggle:checked ~ nav {
   transform: scale(1,1);
 }
-
-.nav-toggle:checked ~ nav a {
+.nav_toggle:checked ~ nav a {
   opacity: 1;
   transition: opacity 250ms ease-in-out 250ms;
 }
@@ -149,7 +135,7 @@ nav a:hover {
   .wishlist {
     display: none;
   }
-  .nav-toggle-label {
+  .nav_toggle_label {
     display: none;
   }
 
