@@ -1,32 +1,8 @@
-<script>
-import { ref } from 'vue';
-
-export default {
-  setup() {
-    const data = ref(null);
-
-    async function fetchData() {
-      try {
-        const response = await fetch('https://business-website-json.vercel.app/team');
-        const jsonData = await response.json();
-        data.value = jsonData;
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-    return {
-      data
-    };
-  }
-};
-</script>
-
 <template>
     <div class="container" > 
         <h1 class="container__title">inspired creators, captivating visions</h1>
         <div class="team_container">
-            <div class="single_card" v-for="member in data" :key="member.id">
+            <div class="single_card" v-for="member in teamData" :key="member.id">
                 <div class="single_card__content">
                     <img class="single_card__img" :src="member.img"> 
                     <div>
@@ -39,10 +15,25 @@ export default {
     </div>
 </template>
 
+<script>
+export default {
+    props: {
+        teamData: {
+            type: Array,
+            required: true,
+        }
+    }
+}
+</script>
+
+
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
 @import "@/assets/main.scss";
 
+.container {
+    margin: 5rem 0;
+}
 
 .team_container {
     display: flex;
@@ -53,7 +44,7 @@ export default {
     overflow-x: hidden;
 }
 .single_card {
-    margin: 0 1rem;
+    margin: 1rem;
     text-align: center;
     &__img {
         max-width: 320px;
@@ -77,7 +68,7 @@ export default {
     .single_card {
         &__img {
             max-width: 290px;
-            margin: 1rem 0;
+            margin: 3rem 0;
             box-shadow: 10px 10px 0px 0px rgba(188,160,107,1);
         }
     }
