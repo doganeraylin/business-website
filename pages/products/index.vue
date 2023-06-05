@@ -4,20 +4,35 @@
     <img class="container__img" src="/assets/banners/products-banner.png">
     <h1 class="container__title">all products</h1>
     <p class="container__subtitle">explore our captivating collection of handcrafted furniture pieces</p>
-    <div class="sortby_container">
-    </div>
     <ProductCard :products="products"/>
     <Footer/>
 </div>
 </template>
 
-<script setup>
-  const { data: products } = await useFetch('https://business-website-json.vercel.app/products')
+<script>
+export default {
+    data() {
+        return {
+            products: [],
+        };
+    },
+    async mounted() {
+        try {
+            const response = await fetch('https://business-website-json.vercel.app/products');
+        if (response.ok) {
+            this.products = await response.json();
+        } else {
+            console.error('Failed to fetch posts:', response.status);
+        }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    },
+};
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .container {
     &__img {
@@ -29,8 +44,6 @@
     &__subtitle {
         text-align: center;
     }
-
-
 }
 </style> 
 
