@@ -8,11 +8,12 @@
         </div>
         
         <div class="input_container">
-            <input type="email" placeholder="example@example.com">
+            <input type="email" placeholder="example@example.com" v-model="email" required>
             <Button 
-                buttonClass="primary-style"
+                :class="isButtonDisabled ? 'disabled-style' : 'primary-style'"
                 buttonText="subscribe" 
-                @click="isModalOpen = true"
+                @click="subscribe"
+                :disabled="isButtonDisabled"
             />
         </div>
     </div>
@@ -21,7 +22,7 @@
     </div>
 </template>
 
-<script setup>
+<!--<script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -31,10 +32,19 @@ const titleRef = ref()
 const subtitleRef = ref()
 const textRef = ref();
 const ctx = ref()
+const email =  ref("");
 
 const isModalOpen = ref(false);
+ const isButtonDisabled = computed(() => {
+      return email.value.trim() === '';
+});
 
-const openModal = () => {
+const subscribe = () => {
+    if ( email.value.trim() === "") {
+        console.log("trimmed")
+        return
+    }
+
   isModalOpen.value = true;
 };
 
@@ -76,6 +86,68 @@ onMounted(() => {
         })
     });
 });
+</script>-->
+<script>
+import { ref, computed, onMounted } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+  data() {
+    return {
+      email: '',
+      isModalOpen: false,
+      emailRegex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+      errorMessage: '',
+    };
+  },
+  methods: {
+    subscribe() {
+      if (!this.isValidEmail()) {
+        this.errorMessage = 'Please enter a valid email address.';
+        return;
+      }
+      this.isModalOpen = true;
+    },
+    closeModal() {
+      this.isModalOpen = false;
+    },
+    isValidEmail() {
+      return this.emailRegex.test(this.email.trim());
+    },
+  },
+  computed: {
+    isButtonDisabled() {
+      return !this.isValidEmail() || this.email.trim() === '';
+    },
+  },
+  mounted() {
+    const titleRef = this.$refs.titleRef;
+    const subtitleRef = this.$refs.subtitleRef;
+
+    let mediaQueries = gsap.matchMedia();
+    mediaQueries.add('(min-width: 800px)', (context) => {
+      context.add(() => {
+        gsap.to(titleRef, {
+          scrollTrigger: {
+            trigger: titleRef,
+            toggleClass: 'title_container__active',
+            start: 'top 90%',
+          },
+        });
+
+        gsap.to(subtitleRef, {
+          scrollTrigger: {
+            trigger: subtitleRef,
+            toggleClass: 'subtitle_container__typing',
+            start: 'top 90%',
+          },
+        });
+      });
+    });
+  },
+};
 </script>
 
 <style lang="scss" scoped>
