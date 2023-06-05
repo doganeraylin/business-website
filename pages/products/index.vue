@@ -40,6 +40,7 @@ export default {
     }
     &__title {
         margin: 1rem auto;
+        font-size: 3rem;
     }
     &__subtitle {
         text-align: center;

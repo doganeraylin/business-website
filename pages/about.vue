@@ -27,6 +27,9 @@
         margin: 1rem auto;
         line-height: 1.75rem;
     }
+    &__title {
+        font-size: 3rem;
+    }
 }
 .story_container {
     margin: 2rem 0;

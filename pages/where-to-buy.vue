@@ -57,6 +57,7 @@ export default {
   }
   &__title {
   margin: 1rem auto;
+  font-size: 2.5rem;
   }
 }
 .filter_container {

@@ -16,13 +16,13 @@
 @import "@/assets/variables.scss";
 
 .statement {
-    margin: 2rem 0;
     max-width: 370px;
-    margin: 0 auto;
     padding: 0 1rem;
+    margin: 5rem auto;
     &__title {
         font-family: $titleFont;
         text-transform: uppercase;
+        font-size: 2rem;
     }
     &__imgs {
         display: flex;
@@ -36,7 +36,7 @@
 @media (min-width: 768px) {
       .statement {
         max-width: 1000px;
-        margin: 0 auto;
+        margin: 10rem auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -50,7 +50,7 @@
             max-width: 600px;
         }
         &__title {
-            font-size: 3.5rem;
+            font-size: 3rem;
             max-width: 550px;
         }
         &__description {
