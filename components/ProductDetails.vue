@@ -1,14 +1,9 @@
-<script setup>
-  const { product } = defineProps(['product'])
-</script>
-
 <template>
     <Navbar/>
     <div class="product_card_container">
         <div class="product_card">
             <img class="product_card__img" :src="product.img">
             <div class="product_details">
-                <p class="product_details__model">Model {{product.model}}</p>
                 <p class="product_details__name">{{product.name}}</p>
                 <p class="product_details__description">{{product.description}}</p>
                 <div class="product_details__materials_container">
@@ -27,12 +22,22 @@
                 </div>
             </div>
         </div>
-            <div class="wishlist">
+            <!-- <div class="wishlist">
                 <img src="/assets/empty-fav.png" class="wishlist__icon">
                 <p class="wishlist__text">Add to wishlist</p>
-            </div>
+            </div> -->
         </div>
 </template>
+
+<script>
+export default {
+  props: {
+    product: {
+      required: true,
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
@@ -107,7 +112,7 @@
             }
     }
     .links {
-    max-width:  1100px;
+        max-width:  1100px;
     }
 
 }

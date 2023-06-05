@@ -10,7 +10,6 @@
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .container {
     display: flex;
@@ -24,7 +23,6 @@
 @media (min-width: 768px) {
     .container {
         flex-direction: row;
-        border: 1px solid magenta;
     }
 }
 

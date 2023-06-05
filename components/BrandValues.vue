@@ -1,3 +1,38 @@
+<template>
+    <div class="container" >
+        <div class="container__brand_value" ref="brandValuesRefOne">
+            <div class="container__title_wrapper">
+                <h1 class="container__title">crafted with care</h1>
+                <div class="container__line"></div>
+            </div> 
+            <div class="container__brand_content">
+                <img class="container__img" src="/assets/brandValues/details.png">
+                <p class="container__statement">Each chair meticulously handcrafted using time-honored techniques.</p>
+            </div>
+        </div>
+         <div class="container__brand_value" ref="brandValuesRefTwo">
+            <div class="container__title_wrapper">
+                <div class="container__line container__materials_line"></div>
+                <h1 class="container__title container__materials_title">materials that matter</h1>
+            </div> 
+            <div class="container__brand_content">
+                <p class="container__statement">Thoughtfully chosen, sustainable materials for chairs of exceptional quality.</p>
+                <img class="container__img" src="/assets/brandValues/material.png">
+            </div>
+        </div>
+         <div class="container__brand_value" ref="brandValuesRefThree">
+            <div class="container__title_wrapper">
+                <h1 class="container__title ">exquisite craftsmanship</h1>
+                <div class="container__line container__craftsmanship_line"></div>
+            </div> 
+            <div class="container__brand_content">
+                <img class="container__img" src="/assets/brandValues/craftsman.png">
+                <p class="container__statement">Our skilled artisans ensure flawless execution of every curve, angle, and finish.</p>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
@@ -49,48 +84,8 @@ onUnmounted(() => {
 });
 </script>
 
-
-<template>
-    <div class="container" >
-        <div class="container__brand_value" ref="brandValuesRefOne">
-            <div class="container__title_wrapper">
-                <h1 class="container__title">crafted with care</h1>
-                <div class="container__line"></div>
-            </div> 
-            <div class="container__brand_content">
-                <img class="container__img" src="/assets/brandValues/details.png">
-                <p class="container__statement">Each chair meticulously handcrafted using time-honored techniques.</p>
-            </div>
-        </div>
-         <div class="container__brand_value" ref="brandValuesRefTwo">
-            <div class="container__title_wrapper">
-                <div class="container__line container__materials_line"></div>
-                <h1 class="container__title container__materials_title">materials that matter</h1>
-            </div> 
-            <div class="container__brand_content">
-                <p class="container__statement">Thoughtfully chosen, sustainable materials for chairs of exceptional quality.</p>
-                <img class="container__img" src="/assets/brandValues/material.png">
-            </div>
-        </div>
-         <div class="container__brand_value" ref="brandValuesRefThree">
-            <div class="container__title_wrapper">
-                <h1 class="container__title ">exquisite craftsmanship</h1>
-                <div class="container__line container__craftsmanship_line"></div>
-            </div> 
-            <div class="container__brand_content">
-                <img class="container__img" src="/assets/brandValues/craftsman.png">
-                <p class="container__statement">Our skilled artisans ensure flawless execution of every curve, angle, and finish.</p>
-            </div>
-        </div>
- 
- 
-    </div>
-</template>
-
-
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .container {
     max-width: 900px;
@@ -118,7 +113,6 @@ onUnmounted(() => {
         width: 100px;
         height: 2px;
         background-color: $light-brown;
-
     }
     &__img {
         margin: 1.5rem 0;
@@ -133,7 +127,6 @@ onUnmounted(() => {
     &__statement {
         max-width: 300px;
         margin: 1.5rem auto 0;
-
     }
     &__materials_title {
         text-align: right !important;
@@ -148,7 +141,6 @@ onUnmounted(() => {
         background-color: $light-brown;
     }
 }
-
 
 @media (min-width: 992px) {
     .container {
@@ -177,5 +169,4 @@ onUnmounted(() => {
         }
     } 
 }
-
 </style>

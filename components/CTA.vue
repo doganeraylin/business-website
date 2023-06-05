@@ -1,3 +1,22 @@
+<template>
+    <div class="container" ref="containerRef">
+        <h1 ref="textRef" class="container__text">Transform Your Living Spaces with Opulence.</h1>
+        <div class="container__imgs" ref="imgsRef">
+            <img class="container__img" src="/assets/cta/chair-1.png">
+            <img class="container__img" src="/assets/cta/chair-2.png">
+            <img class="container__img" src="/assets/cta/chair-3.png">
+        </div>
+        <div class="button_container">
+            <Button 
+                to="/products"
+                buttonClass="primary-style"
+                buttonText="view all products"
+                clickHandler="goToProducts"
+            />
+        </div>
+    </div>   
+</template>
+
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
@@ -43,28 +62,8 @@ onUnmounted(() => {
 });
 </script>
 
-<template>
-    <div class="container" ref="containerRef">
-        <h1 ref="textRef" class="container__text">Transform Your Living Spaces with Opulence.</h1>
-        <div class="container__imgs" ref="imgsRef">
-            <img class="container__img" src="/assets/cta/chair-1.png">
-            <img class="container__img" src="/assets/cta/chair-2.png">
-            <img class="container__img" src="/assets/cta/chair-3.png">
-        </div>
-        <div class="button_container">
-            <Button 
-                to="/products"
-                buttonClass="primary-style"
-                buttonText="view all products"
-                clickHandler="goToProducts"
-            />
-        </div>
-    </div>   
-</template>
-
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .container {
     max-width: 1100px;
@@ -87,19 +86,16 @@ onUnmounted(() => {
         margin: 0.5rem auto;
     }   
 }
-
 .button_container {
     display: flex;
     justify-content: center;
 }
-
 
 @media (min-width: 768px) {
     .container {
         &__text {
             max-width: 600px;
             font-size: 5rem;
-            border: 1px solid green;
         }
         &__imgs {
             flex-direction: row;
@@ -110,8 +106,8 @@ onUnmounted(() => {
             max-width: 240px;
         }
     }
-  
 }
+
 @media (min-width: 992px) {
     .container {
         &__text {
@@ -131,5 +127,4 @@ onUnmounted(() => {
         }
     }
 }
-
 </style>

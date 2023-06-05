@@ -1,13 +1,3 @@
-<script setup>
-import { defineEmits } from 'vue';
-
-const emits = defineEmits(['close']);
-const closeModal = () => {
-  emits('close'); 
-};
-</script>
-
-
 <template>
     <div class="modal_overlay">
         <div class="container">
@@ -25,9 +15,19 @@ const closeModal = () => {
     </div>
 </template>
 
+<script>
+export default {
+  emits: ['close'],
+  methods: {
+    closeModal() {
+      this.$emit('close');
+    },
+  },
+};
+</script>
+
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .container {
     max-width: 520px;
@@ -72,5 +72,4 @@ const closeModal = () => {
         margin-top: 2rem;
     }
 }
-
 </style>

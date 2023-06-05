@@ -1,3 +1,10 @@
+<template>
+  <button :class="buttonClass" @click="handleClick" >
+    <NuxtLink :to="to" v-if="to" class="link_style">{{ buttonText }}</NuxtLink>
+    <span v-else>{{ buttonText }}</span>
+  </button>
+</template>
+
 <script>
 export default {
   props: {
@@ -20,22 +27,14 @@ export default {
 }
 </script>
 
-<template>
-  <button :class="buttonClass" @click="handleClick" >
-    <NuxtLink :to="to" v-if="to" class="link_style">{{ buttonText }}</NuxtLink>
-    <span v-else>{{ buttonText }}</span>
-  </button>
-</template>
-
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .default-style,
 .primary-style,
 .button-small {
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid $black;
   font-weight: lighter;
   cursor: pointer;
 }
@@ -48,7 +47,7 @@ export default {
 .primary-style {
   background-color: $light-brown;
   color: $gray-primary;
-  color: white;
+  color: $white;
   padding: 0.5rem 1rem;
   font-size: 1.3rem;
   margin: 1rem 0;
@@ -60,6 +59,6 @@ export default {
 }
 .link_style {
   text-decoration: none;
-  color: black;
+  color: $black;
 }
 </style>

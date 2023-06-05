@@ -8,8 +8,8 @@
               <li><NuxtLink class="links__single_link" to="/about">about</NuxtLink></li>
               <li><NuxtLink class="links__single_link" to="/products">products</NuxtLink></li>
               <li><NuxtLink class="links__single_link" to="/where-to-buy">where to buy</NuxtLink></li>
-              <li class="wishlist"><Nuxtlink>wishlist</Nuxtlink></li>
-              <li><Nuxtlink><img class="fav-icon" src="/assets/empty-fav.png"></Nuxtlink></li>
+              <!-- <li class="wishlist"><Nuxtlink>wishlist</Nuxtlink></li>
+              <li><Nuxtlink><img class="fav-icon" src="/assets/empty-fav.png"></Nuxtlink></li> -->
             </ul>
         </nav>
          <label for="nav_toggle" class="nav_toggle_label">
@@ -36,7 +36,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .container {
   text-align: center;
@@ -68,7 +67,7 @@ export default {
 .nav_toggle_label span::before,
 .nav_toggle_label span::after {
   display: block;
-  background: #BCA06B;
+  background: $light-brown;
   height: 4px;
   width: 2em;
   border-radius: 2px;
@@ -107,7 +106,7 @@ nav li {
   margin-left: 1rem;
 }
 nav a {
-  color: black;
+  color: $black;
   text-decoration: none;
   font-size: 1.1rem;
   opacity: 0;
@@ -126,7 +125,6 @@ nav a:hover {
 .expanded {
   height: auto; 
 }
-
 
 @media screen and (min-width: 768px) {
   .fav-icon {
@@ -155,7 +153,6 @@ nav a:hover {
   nav ul {
     display: flex;
   }
-  
   nav li {
     margin-left: 2rem;
     margin-bottom: 0;

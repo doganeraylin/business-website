@@ -1,18 +1,3 @@
-<script>
-export default {
-  props: {
-    dealers: {
-      type: Array,
-      required: true
-    },
-    filteredDealers: {
-      type: Array,
-      required: true
-    }
-  },
-}
-</script>
-
 <template>
     <div class="container">
         <div class="dealer_list_container">
@@ -48,9 +33,23 @@ export default {
     </div>
 </template>
 
+<script>
+export default {
+  props: {
+    dealers: {
+      type: Array,
+      required: true
+    },
+    filteredDealers: {
+      type: Array,
+      required: true
+    }
+  },
+}
+</script>
+
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .dealer_list_container {
     display: flex;
@@ -69,7 +68,7 @@ export default {
 }
 .dealer_details_container {
     display: flex;
-    flex-direction:  column;
+    flex-direction: column;
     h3 {
         font-weight: lighter;
         font-size: 0.8rem;
@@ -78,15 +77,14 @@ export default {
         margin: 0.5rem 3rem 0.5rem 0;
     }
 }
+
 @media (min-width: 768px) {
     .dealer_details_container {
         flex-wrap: wrap;
         flex-direction: row;
-
     }
     .single_dealer {
         max-width: 500px;
-
     }
 }
 </style>

@@ -13,12 +13,7 @@
                             buttonText="view details"
                         />
                     </NuxtLink>
-                    <!-- <p class="product_card__price">starting from ${{product.price}}</p> -->
                 </div>
-             
-                <img class="product_card__icon" 
-                
-            
             >
             </div>
         </div>
@@ -35,8 +30,6 @@ export default {
   },
 }
 </script>
-
-
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
@@ -83,10 +76,8 @@ export default {
     .product_card_container {
         flex-direction: row;
         flex-wrap: wrap;
+    }
 }
-}
-
-
 </style> 
 
 

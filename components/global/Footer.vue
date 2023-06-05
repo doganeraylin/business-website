@@ -27,12 +27,10 @@
 
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .container {
     margin-top: 5rem;
-    background-color: $light-brown;
-   
+    background-color: $light-brown;  
 }
 .links {
     color: $gray-primary;
@@ -74,7 +72,6 @@
         font-size: 0.8rem;
     }
 }
-
 
 @media (min-width: 768px) {
     .container {

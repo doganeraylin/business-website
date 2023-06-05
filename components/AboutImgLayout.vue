@@ -12,10 +12,8 @@
     </div>
 </template>
 
-
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .img_container {
     display: flex;
@@ -48,8 +46,5 @@
             height: 275px;
         }
     }
-
 }
-   
-
 </style>

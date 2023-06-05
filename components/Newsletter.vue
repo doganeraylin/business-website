@@ -1,3 +1,26 @@
+<template>
+    <div class="container">
+        <div class="title_container" >
+             <h1 class="title_container__title" ref="titleRef">Unlock a World of Inspiration:</h1>
+        </div>
+        <div class="subtitle_container" >
+            <h2 class="subtitle_container__subtitle" ref="subtitleRef"> Join Our Newsletter for Design Tips, Trends, and Exclusive Deals.</h2>
+        </div>
+        
+        <div class="input_container">
+            <input type="email" placeholder="example@example.com">
+            <Button 
+                buttonClass="primary-style"
+                buttonText="subscribe" 
+                @click="isModalOpen = true"
+            />
+        </div>
+    </div>
+    <div v-if="isModalOpen">
+        <Confirmation @close="closeModal"/>
+    </div>
+</template>
+
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import gsap from 'gsap';
@@ -8,9 +31,6 @@ const titleRef = ref()
 const subtitleRef = ref()
 const textRef = ref();
 const ctx = ref()
-
-
-
 
 const isModalOpen = ref(false);
 
@@ -58,30 +78,6 @@ onMounted(() => {
 });
 </script>
 
-<template>
-    <div class="container">
-        <div class="title_container" >
-             <h1 class="title_container__title" ref="titleRef">Unlock a World of Inspiration:</h1>
-        </div>
-        <div class="subtitle_container" >
-            <h2 class="subtitle_container__subtitle" ref="subtitleRef"> Join Our Newsletter for Design Tips, Trends, and Exclusive Deals.</h2>
-        </div>
-        
-        <div class="input_container">
-            <input type="email" placeholder="example@example.com">
-            <Button 
-                buttonClass="primary-style"
-                buttonText="subscribe" 
-                @click="isModalOpen = true"
- 
-            />
-        </div>
-    </div>
-    <div v-if="isModalOpen">
-        <Confirmation @close="closeModal"/>
-    </div>
-</template>
-
 <style lang="scss" scoped>
 @import "@/assets/variables.scss";
 @import "@/assets/main.scss";
@@ -93,15 +89,15 @@ onMounted(() => {
 }
 .title_container {
     &__title {
-    font-size: 3rem;
+        font-size: 3rem;
     }
     &__active {
-    width: 25ch;
-    margin: 0 auto;
-    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid;
+        width: 25ch;
+        margin: 0 auto;
+        animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid;
    }
     
 }
@@ -120,6 +116,15 @@ onMounted(() => {
         border-right: 3px solid;
     }
 }
+.input_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    input[type="email"] {
+        padding: 0.8rem 1rem;
+        border: none;
+    }
+}
 
 @keyframes typing {
   from {
@@ -131,16 +136,6 @@ onMounted(() => {
   50% {
     border-color: transparent
   }
-}
-
-.input_container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    input[type="email"] {
-    padding: 0.8rem 1rem;
-    border: none;
-    }
 }
 
 @media (min-width: 1080px) {

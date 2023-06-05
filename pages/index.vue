@@ -8,11 +8,16 @@
     <Confirmation v-show="showModal"/>  
 </template>
 
-<script setup>
-    const showModal = false
+<script>
+export default {
+  data() {
+    return {
+      showModal: false,
+    };
+  },
+};
 </script>
 
 <style>
-@import "@/assets/main.scss";
 @import "@/assets/variables.scss";
 </style>

@@ -14,7 +14,6 @@
 
 <script setup>
   const { data: teamData } = await useFetch('https://business-website-json.vercel.app/team')
- 
 </script>
 
 <style lang="scss" scoped>
