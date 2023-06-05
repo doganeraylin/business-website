@@ -2,7 +2,8 @@
     <div class="container" > 
         <h1 class="container__title">inspired creators, captivating visions</h1>
         <div class="team_container">
-            <div class="single_card" v-for="member in teamData" :key="member.id">
+            <button class="button" @click="handlePrevSlide">&lt;</button>
+            <div class="single_card" v-for="(member) in activeMembers" :key="member.id">
                 <div class="single_card__content">
                     <img class="single_card__img" :src="member.img"> 
                     <div>
@@ -11,19 +12,41 @@
                     </div>
                 </div>
             </div>
+            <button class="button" @click="handleNextSlide">&gt;</button>
+        
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: {
-        teamData: {
-            type: Array,
-            required: true,
-        }
-    }
-}
+  data() {
+    return {
+      activeIndices: [0, 1, 2],
+    };
+  },
+  props: {
+    teamData: {
+      type: Array,
+      required: true,
+    },
+  },
+  computed: {
+    activeMembers() {
+      return this.activeIndices.map((index) => this.teamData[index]);
+    },
+  },
+  methods: {
+    handleNextSlide() {
+      this.activeIndices = this.activeIndices.map((index) => (index + 1) % this.teamData.length);
+    },
+    handlePrevSlide() {
+      this.activeIndices = this.activeIndices.map((index) =>
+        index === 0 ? this.teamData.length - 1 : index - 1
+      );
+    },
+  },
+};
 </script>
 
 
@@ -41,7 +64,6 @@ export default {
     align-items: center;
     max-width: 1100px;
     margin: 0 auto;
-    overflow-x: hidden;
 }
 .single_card {
     margin: 1rem;
