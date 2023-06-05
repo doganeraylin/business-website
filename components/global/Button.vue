@@ -61,4 +61,7 @@ export default {
   text-decoration: none;
   color: $black;
 }
+.disabled {
+  background: $gray-primary;
+}
 </style>
