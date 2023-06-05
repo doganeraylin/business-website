@@ -45,6 +45,18 @@ export default {
       );
     },
   },
+  mounted() {
+  const mediaQuery = window.matchMedia('(max-width: 992px)');
+  const handleResize = () => {
+    if (mediaQuery.matches) {
+      this.activeIndices = Array.from(Array(this.teamData.length).keys());
+    } else {
+      this.activeIndices = [0, 1, 2];
+    }
+  };
+  handleResize();
+    mediaQuery.addEventListener('change', handleResize);
+  },
 };
 </script>
 
