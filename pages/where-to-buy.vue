@@ -17,22 +17,39 @@
   </div>
 </template>
 
-
-<script setup>
-  const { data: dealers } = await useFetch('https://business-website-json.vercel.app/dealersList')
-  const allDealers = ref([dealers])
-  const filteredDealers = ref([])
-  let isFilterOpen = ref(false)
-  function toggleFilter  () {
-    console.log("filter")
-     isFilterOpen.value = !isFilterOpen.value
-  }
+<script>
+export default {
+  data() {
+    return {
+      dealers: [],
+      allDealers: [],
+      filteredDealers: [],
+      isFilterOpen: false,
+    };
+  },
+  async mounted() {
+    try {
+      const response = await fetch('https://business-website-json.vercel.app/dealersList');
+      if (response.ok) {
+        this.dealers = await response.json();
+      } else {
+        console.error('Failed to fetch posts:', response.status);
+      }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    this.allDealers = [dealers]
+  },
+  methods: {
+    toggleFilter() {
+      this.isFilterOpen = !this.isFilterOpen;
+    },
+  },
+};
 </script>
-
 
 <style lang="scss">
 @import "@/assets/variables.scss";
-@import "@/assets/main.scss";
 
 .container {
   &__img {
@@ -42,20 +59,19 @@
   margin: 1rem auto;
   }
 }
-
 .filter_container {
   position: relative;
   display: inline-block;
-    &__toggle {
-    cursor: pointer;
+  &__toggle {
+  cursor: pointer;
     padding: 0.5rem 1rem;
     margin: 0 1rem;
-    border: 1px solid black;
-    }
-    &__toggle:hover {
+    border: 1px solid $black;
+  }
+  &__toggle:hover {
     background-color: $light-brown;
-    }
-    &__dropdown {
+  }
+  &__dropdown {
     position: absolute;
     top: 100%;
     left: 1rem;
@@ -65,17 +81,16 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     height: auto;
-    }
-    &__dropdown label {
+  }
+  &__dropdown label {
     display: block;
     margin-bottom: 0.5rem;    
-    }
-    &__dropdown input[type="checkbox"] {
+  }
+  &__dropdown input[type="checkbox"] {
     margin-right: 0.5rem;
-    }
-    &__dropdown span {
+  }
+  &__dropdown span {
     font-size: 0.9rem;
-    }
+  }
 } 
-
 </style>
