@@ -44,8 +44,9 @@ export default {
 @import "@/assets/main.scss";
 
 .product_card_container {
+    border: 1px solid $black;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 5rem auto;
 }
 .product_card {
     display: flex;
