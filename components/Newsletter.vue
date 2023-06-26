@@ -4,7 +4,7 @@
              <h1 class="title_container__title" ref="titleRef">Unlock a World of Inspiration:</h1>
         </div>
         <div class="subtitle_container" >
-            <h2 class="subtitle_container__subtitle" ref="subtitleRef"> Join Our Newsletter for Design Tips, Trends, and Exclusive Deals.</h2>
+            <h2 class="subtitle_container__subtitle"> Join Our Newsletter for Design Tips, Trends, and Exclusive Deals.</h2>
         </div>
         
         <div class="input_container">
@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
@@ -68,15 +67,7 @@ export default {
           scrollTrigger: {
             trigger: titleRef,
             toggleClass: 'title_container__active',
-            start: 'top 90%',
-          },
-        });
-
-        gsap.to(subtitleRef, {
-          scrollTrigger: {
-            trigger: subtitleRef,
-            toggleClass: 'subtitle_container__typing',
-            start: 'top 90%',
+            start: 'top 100%',
           },
         });
       });
